@@ -81,17 +81,18 @@ form.innerHTML =
 
 document.querySelector('#create-monster').append(form)
 
-addEventListener('submit',function(e){
+form.addEventListener('submit',function(e){
   e.preventDefault()
+
   fetch("http://localhost:3000/monsters",{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body:JSON.stringify({
-      name: document.querySelector("#name").value,
-      age: document.querySelector("#age").value,
-      description: document.querySelector("#description").value
+      name: e.target.name.value,
+      age: e.target.age.value,
+      description: e.target.description.value
     })
   })
 
